@@ -1,6 +1,7 @@
 # GLB Viewer
 
 A browser-based 3D model viewer built with **Svelte 5** and **Three.js**.
+[View the app here](https://jwilly96.github.io/gltf-file-viewer/)
 
 ## Features
 
