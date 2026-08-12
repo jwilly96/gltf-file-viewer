@@ -14,6 +14,8 @@ export default defineConfig({
       },
     },
   ],
+  // './' = relative asset paths — works on GitHub Pages without knowing the repo name
+  base: './',
   build: {
     rollupOptions: {
       input: 'main.html',
