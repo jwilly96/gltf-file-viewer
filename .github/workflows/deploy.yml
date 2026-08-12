@@ -30,10 +30,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # GitHub Pages requires index.html; block Jekyll so it serves the Vite app
-      - run: |
+      - name: Prepare dist
+        run: |
           mv dist/main.html dist/index.html
-          cp dist/index.html dist/404.html
           touch dist/.nojekyll
 
       - uses: actions/configure-pages@v5
