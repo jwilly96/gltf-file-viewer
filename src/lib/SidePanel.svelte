@@ -133,7 +133,7 @@
 
   .tabs button.active {
     color: var(--text-h);
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid currentcolor;
     margin-bottom: -1px;
   }
 
@@ -154,9 +154,7 @@
   }
 
   .option-row input[type='checkbox'] {
-    accent-color: var(--accent);
-    width: 15px;
-    height: 15px;
+    /* sizing handled by global 1em rule */
   }
 
   .option-row input[type='color'] {
@@ -186,7 +184,7 @@
 
   .slider-row input[type='range'] {
     flex: 1;
-    accent-color: var(--accent);
+    accent-color: currentcolor;
     min-width: 0;
   }
 

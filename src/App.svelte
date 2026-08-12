@@ -7,6 +7,12 @@
   import Toolbar from './lib/Toolbar.svelte';
   import SidePanel from './lib/SidePanel.svelte';
 
+  const sampleModelGlob = import.meta.glob('./assets/sample-models/*.glb', { as: 'url', eager: true });
+  const sampleModels = Object.entries(sampleModelGlob).map(([path, url]) => ({
+    name: path.split('/').pop().replace(/\.glb$/i, '').replace(/[_-]/g, ' '),
+    url,
+  }));
+
   let canvas;
   let renderer, scene, camera, controls, animFrameId;
   let modelLoaded = $state(false);
@@ -130,8 +136,7 @@
     };
   }
 
-  function loadGLB(file) {
-    const url = URL.createObjectURL(file);
+  function loadFromUrl(url, revoke = false) {
     const loader = new GLTFLoader();
     loader.load(url, (gltf) => {
       scene.children
@@ -159,18 +164,26 @@
       scene.add(model);
       modelLoaded = true;
       collectStats(model);
-      URL.revokeObjectURL(url);
+      if (revoke) URL.revokeObjectURL(url);
     });
+  }
+
+  function loadGLB(file) {
+    loadFromUrl(URL.createObjectURL(file), true);
   }
 
   function onFileChange(e) {
     const file = e.target.files[0];
     if (file) loadGLB(file);
   }
+
+  function onSampleLoad(url) {
+    loadFromUrl(url);
+  }
 </script>
 
 <div class="container">
-  <Toolbar {modelLoaded} {onFileChange} />
+  <Toolbar {modelLoaded} {onFileChange} {sampleModels} {onSampleLoad} />
 
   <div class="viewport">
     <SidePanel

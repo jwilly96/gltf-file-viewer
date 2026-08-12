@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'AcPlus';
-  src: url('./assets/AcPlus_Cordata_PPC-400.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   --text: #ff0000;
@@ -18,9 +13,9 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: 'AcPlus', monospace;
-  --heading: 'AcPlus', monospace;
-  --mono: 'AcPlus', ui-monospace, Consolas, monospace;
+  --sans: 'Space Mono', monospace;
+  --heading: 'Space Mono', monospace;
+  --mono: 'Space Mono', monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -70,6 +65,29 @@ label {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
+}
+
+/* square checkbox styled to match .box border */
+input[type='checkbox'] {
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: currentcolor;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: currentcolor;
 }
 
 h1,
