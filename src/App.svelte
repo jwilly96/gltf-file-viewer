@@ -7,7 +7,7 @@
   import Toolbar from './lib/Toolbar.svelte';
   import SidePanel from './lib/SidePanel.svelte';
 
-  const sampleModelGlob = import.meta.glob('./assets/sample-models/*.glb', { as: 'url', eager: true });
+  const sampleModelGlob = import.meta.glob('./assets/sample-models/*.glb', { query: '?url', import: 'default', eager: true });
   const sampleModels = Object.entries(sampleModelGlob).map(([path, url]) => ({
     name: path.split('/').pop().replace(/\.glb$/i, '').replace(/[_-]/g, ' '),
     url,
